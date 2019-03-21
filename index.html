@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Public School E-ventory System</title>
+</head>
+<body>
+<h1> Welcome to the Public School E-ventory System!</h1>
+<div id="loginDiv">
+  <p id='notification'></p>
+  <form id='loginForm'action='#' onsubmit="return login()">
+    <label for="userName"><b>Username</b></label>
+    <input type="text" id="userName" placeholder="Enter Your Username" required/>
+    <br>
+    <label for="passWord"><b>Password</b></label>
+    <input type="password" id="passWord" placeholder="Enter Your Pasword" required/>
+    <br>
+    <button type="submit">Login</button>
+    <br>
+    <label>New User? &nbsp;
+      <button type="button" onclick="window.location.href='createNew.html'">Create New Account</button>
+      </label>
+  </form>
+</body>
+</html>
