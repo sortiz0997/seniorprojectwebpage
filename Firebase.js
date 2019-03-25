@@ -27,7 +27,7 @@ function view(){
   document.getElementById('editConfirm').style.display = 'block';
   document.getElementById('editSpace').style.display = 'none';
   document.getElementById('space').style.display = 'none';
-  clearInvTable();
+  clearInvTable('inventory');
   laptopRef.once('value')
   .then(function(dataSnapshot)  {
     dataSnapshot.forEach(function(snapShot) {
@@ -65,10 +65,10 @@ function invTableMaking(dataArray, tble){
   });
 }
 //empties table entries
-function clearInvTable(){
-  var numbRows = document.getElementById('inventory').getElementsByTagName('tr').length;
+function clearInvTable(tble){
+  var numbRows = document.getElementById(tble).getElementsByTagName('tr').length;
   for(var i=1; i<numbRows; i++){
-    document.getElementById('inventory').deleteRow(1);
+    document.getElementById(tble).deleteRow(1);
   }
 }
 //searches for device via AssetTag or SEricalNumber
@@ -77,7 +77,7 @@ function searchDevice(searchCriteria, tble, deviceEdits){
   searchCriteria = searchCriteria.toUpperCase();
   document.getElementById('space').style.display = 'none';
   document.getElementById('space').innerHTML = '';
-   clearInvTable();
+   clearInvTable(tble);
     laptopRef.once('value')
     .then(function(dataSnapshot)  {
       dataSnapshot.forEach(function(snapShot) {
