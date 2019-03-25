@@ -45,8 +45,7 @@ function createNewAccount(){
     window.alert("Passwords Don't Match!");
   } else  {
     databaseFire.database().ref('Logins/').push(login);
-    document.getElementById('newAccount').style.display='none';
-    document.getElementById('loginForm').style.display='block';
+    document.location.href = "./loginStart"
     clearInputs();
     document.getElementById('notification').innerHTML = "Account Created";
   }
