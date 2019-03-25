@@ -2,10 +2,43 @@
 <html>
 <head>
 	<title>Public School E-ventory System</title>
-</head>
-<body>
-<h1> Welcome to the Public School E-ventory System!</h1>
+	<script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>
+	<script src = "Firebase.js" ></script>
 
-<button style="color:blue" name ="ViewInventory">Click to view Inventory</button>
+</head>
+
+<body>
+	<h1> Welcome to the Public School E-ventory System!</h1>
+	<div id="navigationBar">
+		<ul id="links">
+			<li id="mainAdmin"><a href="./EventoryDraft1.html">Main Page</a></li>
+			<li id="viewAdmin"><a href="./viewInventory.html">View Device Inventory</a></li>
+			<li id="addAdmin"><a href="./addDevice.html">Add New Device</a></li>
+			<li id="locationSearch"><a href="./locationSearch">Search for Device Storage Location</a></li>
+			<li id="serviceRequest"><a href="./serviceRequests.html">Request Service</a></li>
+			<li id="borrowManage"><a href="./borrowManagement">Manage Borrowing</a></li>
+		</ul>
+	</div>
+	<div id="mainPage">
+
+	<div id="searchDelete">
+		<form id="delete" action="#" onsubmit="return deleteDevice()">
+			<label for="deleteInput"><b>Delete Device: </b></label>
+			<input type="text" id="deleteInput" placeholder="Enter SerialNumber or AssetTag" required/>
+			&nbsp;
+			<button type="submit"><b>Delete Device</b></button>
+		</form>
+		<br/>
+		
+	</div>
+
+
+	</div>
+	<div id="buttons">
+		<button style="color:blue" name ="ViewInventory" onclick="isEmpty()">Click to function isEmpty</button>
+		<button style="color:orange" name ="CLEAR" onclick="clearInvTable()">Click to function CLEAR</button>
+		</div>
+	</div>
+
 </body>
 </html>

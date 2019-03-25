@@ -1,0 +1,19 @@
+{
+  "name": "e-ventory",
+  "version": "1.0.0",
+  "description": "Senior Project Trinity College 18-19",
+  "main": "(EventoryDraft1.html)",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sortiz0997/E-ventory.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sortiz0997/E-ventory/issues"
+  },
+  "homepage": "https://github.com/sortiz0997/E-ventory#readme"
+}

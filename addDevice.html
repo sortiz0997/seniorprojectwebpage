@@ -1,0 +1,43 @@
+<!DOCTYPE html>]
+<html>
+  <head>
+      <title>Public School E-ventory System</title>
+      <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>
+      <script src = "Firebase.js" ></script>
+  </head>
+  <body>
+      <h1> Welcome to the Public School E-ventory System!</h1>
+      <div id="navigationBar">
+        <ul id="links">
+          <li id="mainAdmin"><a href="./EventoryDraft1.html">Main Page</a></li>
+          <li id="viewAdmin"><a href="./viewInventory.html">View Device Inventory</a></li>
+          <li id="addAdmin"><a href="./addDevice.html">Add New Device</a></li>
+          <li id="locationSearch"><a href="./locationSearch">Search for Device Storage Location</a></li>
+          <li id="serviceRequest"><a href="./serviceRequests.html">Request Service</a></li>
+          <li id="borrowManage"><a href="./borrowManagement">Manage Borrowing</a></li>
+        </ul>
+      </div>
+      <div id="addInput">
+        <p id="addNotification" style="display:none"></p>
+          <form id="addDevice" action="#" onsubmit="return addDevice()">
+            <label for="deviceModel"><b>Device Model: </b></label>
+            <input type="text" id="deviceModel" placeholder="Enter Device Model" required/>
+            <br>
+            <label for="deviceLocation"><b>Cart Name: </b></label>
+            <input type="text" id="deviceLocation" placeholder="Enter Storage Cart Name" required/>
+            <br>
+            <label for="cartSlot"><b>Cart Slot: </b></label>
+            <input type="text" id="cartSlot" placeholder="Enter Slot Number or n/a" required/>
+            <br>
+            <label for="deviceSerialNumb"><b>Serial Number: </b></label>
+            <input type="text" id="deviceSerialNumb" placeholder="Enter Serial Number" required/>
+            <br>
+            <label for="deviceAssetTag"><b>Asset Tag: </b></label>
+            <input type="text" id="deviceAssetTag" placeholder="Enter Asset Tag" required/>
+            <br>
+            <button type="submit"><b>Add Device</b></button>
+          </form>
+          <br/>
+        </div>
+  </body>
+</html>

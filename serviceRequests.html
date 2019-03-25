@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <title>Public School E-ventory System</title>
+      <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>
+      <script src = "Firebase.js" ></script>
+  </head>
+  <body>
+      <h1> Welcome to the Public School E-ventory System!</h1>
+      <div id="navigationBar">
+        <ul id="links">
+          <li id="mainAdmin"><a href="./EventoryDraft1.html">Main Page</a></li>
+          <li id="viewAdmin"><a href="./viewInventory.html">View Device Inventory</a></li>
+          <li id="addAdmin"><a href="./addDevice.html">Add New Device</a></li>
+          <li id="locationSearch"><a href="./locationSearch">Search for Device Storage Location</a></li>
+          <li id="serviceRequest"><a href="./serviceRequests.html">Request Service</a></li>
+          <li id="borrowManage"><a href="./borrowManagement">Manage Borrowing</a></li>
+        </ul>
+      </div>
+      <form id="serviceConfirm" action="#" onsubmit="return passToSearch('service','seviceTble')">
+          <label for="serviceInput"><b>Enter serial number or asset tag from device:</b></label>
+          <input type="text" id="seviceInput" required/> &nbsp;
+          <button type="submit"><b>Request Service</b></button>
+      <form></form>
+          <form id="service" action="#" onsubmit="return serviceRequest()">
+
+              <label for="serviceEdit"><b>If device is displayed as in service and is now complete please enter "done". Else enter the details for the service request:</b></label>
+              <br>
+              <input type="text" id="serviceEdit" placeholder="Service"/>
+              <br>
+              <button type="submit"><b>Request Service</b></button>
+            </form>
+  </body>
+</html>
