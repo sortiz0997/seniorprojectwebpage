@@ -45,8 +45,25 @@ function createNewAccount(){
     window.alert("Passwords Don't Match!");
   } else  {
     databaseFire.database().ref('Logins/').push(login);
-    document.location.href ='./loginStart';
+    window.location.href ='./loginStart';
     clearInputs();
     document.getElementById('notification').innerHTML = "Account Created";
   }
+}
+function loginExists(email,usrName,passWord){
+  var found;
+  loginRef.once('value')
+  .then(function(dataSnapshot)  {
+    dataSnapshot.forEach(function(snapShot) {
+      if(snapShot.child('Email') == email && snapShot.child('Username').val() == usrName && snapShot.child('Password').val() == passWord){
+        found = true;
+        return true;
+      }
+    });
+    if (found)
+      return true;
+    else
+    return false;
+  });
+  return found;
 }
