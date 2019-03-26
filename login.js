@@ -33,7 +33,6 @@ function clearInputs(){
     if (elements[i].type == "text"|| elements[i].type == "password") {
       elements[i].value = "";
     }
-    document.getElementById('notification').innerHTML = '';
   }
 }
 function createNewAccount(){
@@ -45,9 +44,9 @@ function createNewAccount(){
     window.alert("Passwords Don't Match!");
   } else  {
     databaseFire.database().ref('Logins/').push(login);
+    window.alert("Account Created");
     window.location.href ='./loginStart';
     clearInputs();
-    document.getElementById('notification').innerHTML = "Account Created";
   }
 }
 function loginExists(email,usrName,passWord){
