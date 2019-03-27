@@ -45,7 +45,7 @@ function createNewAccount(){
   } else  {
     databaseFire.database().ref('Logins/').push(login);
     window.alert("Account Created");
-    window.location.href ='loginStart.html';
+    window.location.href ='index.html';
     clearInputs();
   }
 }
