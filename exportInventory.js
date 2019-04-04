@@ -1,11 +1,11 @@
 /* eslint-disable no-unused-vars */
 import view from "./Firebase";
 
-function exportTableToExcel(tableID, filename = ''){
+function exportTableToExcel(filename = ''){
   var downloadLink;
   var dataType = 'application/vnd.ms-excel';
-  var tableSelect = document.getElementById(tableID);
-  view(tableSelect);
+  var tableSelect = document.getElementById('inventory');
+  view();
   var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
 
   // Specify file name
