@@ -17,7 +17,7 @@ function login(){
   .then(function(dataSnapshot)  {
     dataSnapshot.forEach(function(snapShot) {
       if(snapShot.child('Username').val() == document.getElementById('userName').value && document.getElementById('passWord').value == snapShot.child('Password').val()){
-        windows.setTimeout(function(){window.location.href = 'EventoryDraft1.html';}, 2000)
+        window.setTimeout(function(){window.location.href = 'EventoryDraft1.html';}, 2000)
         return true;
       } else  {
         document.createElement('p').setAttribute('id','notification');
