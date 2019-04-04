@@ -17,7 +17,7 @@ function login(){
   .then(function(dataSnapshot)  {
     dataSnapshot.forEach(function(snapShot) {
       if(snapShot.child('Username').val() == document.getElementById('userName').value && document.getElementById('passWord').value == snapShot.child('Password').val()){
-        window.location.href='EventoryDraft1.html';
+        windows.setTimeout(function(){window.location.href = 'EventoryDraft1.html';}, 2000)
         return true;
       } else  {
         document.createElement('p').setAttribute('id','notification');
@@ -42,7 +42,9 @@ function createNewAccount(){
   var login = {Username:accUserName, Password: accPassWord, Email: email};
   if(document.getElementById('newPassword').value != document.getElementById('confirmPassword').value){
     window.alert("Passwords Don't Match!");
-  } else  {
+  } else if(loginExists(email, accUserName, accPassWord))
+    window.alert('Account Already Exsists');
+    else  {
     databaseFire.database().ref('Logins/').push(login);
     window.alert("Account Created");
     clearInputs();

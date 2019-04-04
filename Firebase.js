@@ -90,8 +90,7 @@ function searchDevice(searchCriteria, tble, deviceEdits){
         }
       });
       if (!deviceFound){
-          document.getElementById('space').style.display = 'block';
-          document.getElementById('space').innerHTML = "Device Not Found";
+          window.alert('Device Not Found');
           }
     })
 
@@ -144,8 +143,6 @@ function addDevice(){
   databaseFire.database().ref("Laptops" + '/' + storage.toUpperCase()).set(device);
   document.getElementById('addNotification').style.display = "block";
   document.getElementById('addNotification').innerHTML = "Added device";
-
-  view();
 }
 // Code adapted from https://www.codexworld.com/export-html-table-data-to-excel-using-javascript/
 function exportTableToExcel(filename = ''){
