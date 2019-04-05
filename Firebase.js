@@ -145,7 +145,7 @@ function addDevice(){
   document.getElementById('addNotification').innerHTML = "Added device";
 }
 // Code adapted from https://www.codexworld.com/export-html-table-data-to-excel-using-javascript/
-function exportTableToExcel(id, filename = ''){
+function exportTableToExcel(id, fn){
  // function export_table_to_excel(id, fn) {
     var wb = XLSX.utils.table_to_book(document.getElementById(id), {sheet:"Sheet JS"});
     var fname = fn || 'test.' + 'xls';
