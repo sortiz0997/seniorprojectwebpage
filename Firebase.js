@@ -151,7 +151,8 @@ function exportTableToExcel(tableID, filename = ''){
   var dataType = 'application/vnd.ms-excel';
   var tableSelect = document.getElementById(tableID);
   var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
-  
+  window.open('data:application/vnd.ms-excel,' + tableSelect);
+  /* 
   // Specify file name
   filename = filename?filename+'.xls':'excel_data.xls';
   
@@ -173,7 +174,7 @@ function exportTableToExcel(tableID, filename = ''){
       downloadLink.download = filename;
       
       //triggering the function
-      downloadLink.click();
+      downloadLink.click(); */
   }
 }
 
