@@ -148,7 +148,7 @@ function addDevice(){
 function exportTableToExcel(id, fn){
  // function export_table_to_excel(id, fn) {
     var wb = XLSX.utils.table_to_book(document.getElementById(id), {sheet:"Sheet JS"});
-    var fname = fn + 'xls'|| 'test.' + 'xls';
+    var fname = fn + '.xls'|| 'test.' + 'xls';
     XLSX.writeFile(wb, fname);
   }
   /* view();
