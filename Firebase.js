@@ -27,11 +27,11 @@ function view(){
   document.getElementById('editConfirm').style.display = 'block';
   document.getElementById('editSpace').style.display = 'none';
   document.getElementById('space').style.display = 'none';
-  clearInvTable('inventory');
+  clearInvTable('inventoryTable');
   laptopRef.once('value')
   .then(function(dataSnapshot)  {
     dataSnapshot.forEach(function(snapShot) {
-        viewingArray(snapShot, 'inventory');
+        viewingArray(snapShot, 'inventoryTable');
     });
   })
 }

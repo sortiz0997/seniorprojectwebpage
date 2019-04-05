@@ -43,8 +43,10 @@ function createNewAccount(){
   var login = {Username:accUserName, Password: accPassWord, Email: email};
   if(document.getElementById('newPassword').value != document.getElementById('confirmPassword').value){
     window.alert("Passwords Don't Match!");
-  } else if(loginExists(email, accUserName, accPassWord))
+  } else if(loginExists(email, accUserName, accPassWord)){
+    
     window.alert('Account Already Exsists');
+  }
     else  {
     databaseFire.database().ref('Logins/').push(login);
     window.alert("Account Created");
@@ -54,6 +56,7 @@ function createNewAccount(){
   return false;
 }
 function loginExists(email,usrName,passWord){
+  console.log('checked');
   var found;
   loginRef.once('value')
   .then(function(dataSnapshot)  {

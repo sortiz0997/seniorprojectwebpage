@@ -17,12 +17,12 @@
           <li id="borrowManage"><a href="./borrowManagement">Manage Borrowing</a></li>
         </ul>
       </div>
-      <form id="serviceConfirm" action="#" onsubmit="return passToSearch('service','seviceTble')">
+      <form id="serviceConfirm" action="#" onsubmit="passToSearch('service','seviceTble')">
           <label for="serviceInput"><b>Enter serial number or asset tag from device:</b></label>
           <input type="text" id="seviceInput" required/> &nbsp;
           <button type="submit"><b>Request Service</b></button>
       <form></form>
-          <form id="service" action="#" onsubmit="return serviceRequest()">
+          <form id="service" action="#" onsubmit="serviceRequest()">
 
               <label for="serviceEdit"><b>If device is displayed as in service and is now complete please enter "done". Else enter the details for the service request:</b></label>
               <br>

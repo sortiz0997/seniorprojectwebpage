@@ -23,7 +23,7 @@
         </ul>
       </div>
     <div id="deviceTable">
-    <table id="inventory">
+    <table id="inventoryTable">
       <thead>
         <tr>
           <th>Device Model</th>
@@ -39,7 +39,7 @@
     </div>
     <div id="editDevice">
         <p id="space"></p>
-      <form id="editConfirm" action="#" onsubmit="return passToSearch('edit', 'inventory')">
+      <form id="editConfirm" action="#" onsubmit="passToSearch('edit', 'inventoryTable')">
         <label for="editInput"><b>Enter serial number or asset tag from device:</b></label>
         <input type="text" id="editInput" required/> &nbsp;
         <button type="submit"><b>Edit Device</b></button>
@@ -47,7 +47,7 @@
       <div id="editSpace"  style="display: none">
         <p id="deviceValue" style="display: none"></p>
         <p>Enter below the new values for the device. Previous values are shown above</p>
-        <form id="edit" action="#" onsubmit="return changeValues()">
+        <form id="edit" action="#" onsubmit="changeValues()">
 
           <label for="serialEdit"><b>Enter New Serial Number:</b></label>
           <input type="text" id="serialEdit" placeholder="Serial Number"/>
@@ -69,7 +69,7 @@
         </form>
       </div>
     </div>
-    <button style="color:darkviolet" name="export" onclick="exportTableToExcel('inventory','exportedInventory')">Click to export</button>
+    <button style="color:darkviolet" name="export" onclick="exportTableToExcel('inventoryTable', 'exportedInventory')">Click to export</button>
     <button style="color:blue" name="view" onclick="view()">Click to view inventory</button>
   </body>
 </html>

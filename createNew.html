@@ -15,8 +15,18 @@ input {
   margin-top: 6px;
   margin-bottom: 16px;
 }
+input[type=radio] {
+  width: 5%;
+  vertical-align: baseline;
+  
+}
+#privLabel{
+  vertical-align:auto;
 
-/* Style the submit button */
+}
+
+
+/* Style the submit bu<input type="radio" id="admin" name="privilige" required/>tton */
 input[type=submit] {
   background-color: #4CAF50;
   color: white;
@@ -72,7 +82,7 @@ input[type=submit] {
 <p></p>
 
 <div class="container">
-    <form id="newAccount" action='#' onsubmit='return createNewAccount()'autocomplete="off">
+    <form id="newAccount" action='#' onsubmit='createNewAccount()'autocomplete="off">
     <label for="newEmail"><b>Email</b></label>
     <input type="text" id="newEmail" placeholder="Enter Your Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Please Enter a Valid Email Address" required/>
 
@@ -85,8 +95,9 @@ input[type=submit] {
     <label for="confirmPassword"><b>Confirm Password</b></label>
 		<input type="password" id="confirmPassword" placeholder="Confirm Password" required/>
     <label><b>Are you a(n)...</b></label>
-    <input type="radio" id="admin" name="privilige" required/> Adminstrator
-    <input type="radio" id="teacher" name="privilige"/> Teacher
+    <br/>
+    <label id='privLabel'><input type="radio" id="admin" name="privilige" required/><b>Adminstrator</b></label>
+    <label id="privLabel"><input type="radio" id="teacher" name="privilige"/><b>Teacher</b></label>
     <input type="submit" value="Submit">
   </form>
 </div>
