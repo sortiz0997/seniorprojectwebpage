@@ -174,8 +174,8 @@ function exportTableToExcel(tableID, filename = ''){
       downloadLink.download = filename;
       
       //triggering the function
-      downloadLink.click(); */
-  }
+      downloadLink.click(); 
+  }*/
 }
 
 function editDevice(found){
