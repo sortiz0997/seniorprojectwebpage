@@ -167,9 +167,7 @@ function changeValues(){
   var device = document.getElementById('deviceValue').innerHTML.toUpperCase();
   var serialNumb = document.getElementById('serialEdit').value.toUpperCase();
   var assetTag = document.getElementById('assetEdit').value.toUpperCase();
-  var borrow = document.getElementById('borrowEdit').value.toUpperCase();
-  var service = document.getElementById('serviceEdit').value.toUpperCase();
-  var values = [serialNumb,assetTag, borrow, service];
+  var values = [serialNumb,assetTag];
   laptopRef.once('value')
     .then(function(dataSnapshot){
       dataSnapshot.forEach(function(snapShot){
@@ -187,24 +185,15 @@ function changeValues(){
                 ref.update({assetTag: values[i]});
               }
               break;
-            case 2:
-              if(values[i] != ''){
-                ref.update({borrow: values[i]});
-              }
-              break;
-            case 3:
-            if(values[i] != ''){
-                ref.update({serviceStatus: values[i]});
-              break;
             }
           }
+          return true;
         }
-        return true;
-      }
+      })
     })
-  })
-  window.setTimeout(view,3000);
-}
+    window.setTimeout(view,3000);
+  }
+
 function searchFound(found){
   if(found){
     document.getElementById('serviceConfirm').style.display = 'none';
@@ -221,7 +210,11 @@ function serviceRequest(){
       dataSnapshot.forEach(function(snapShot){
         if(snapShot.child('assetTag').val() == device || snapShot.child('serialNumber').val() == device){
           var ref = databaseFire.database().ref('Laptops/' + snapShot.key);
-          ref.update({serviceStatus: reporter + ': ' + service});
+          if(service == 'false')
+            ref.update({serviceStatus: service});
+          else
+            ref.update({serviceStatus: reporter + ': ' + service});
+
           return true;
         }
       })
