@@ -85,8 +85,6 @@ function clearInputs(){
 function searchDevice(searchCriteria, tble, searchType){
    var deviceFound;
   searchCriteria = searchCriteria.toUpperCase();
-  document.getElementById('space').style.display = 'none';
-  document.getElementById('space').innerHTML = '';
    clearInvTable(tble);
     laptopRef.once('value')
     .then(function(dataSnapshot)  {
