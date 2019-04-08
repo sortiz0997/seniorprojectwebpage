@@ -71,6 +71,16 @@ function clearInvTable(tble){
     document.getElementById(tble).deleteRow(1);
   }
 }
+
+function clearInputs(){
+  var elements = document.getElementsByTagName("input");
+  for (var i=0; i < elements.length; i++) {
+    if (elements[i].type == "text") {
+      elements[i].value = "";
+    }
+  }
+}
+
 //searches for device via AssetTag or SEricalNumber
 function searchDevice(searchCriteria, tble, searchType){
    var deviceFound;
@@ -96,6 +106,7 @@ function searchDevice(searchCriteria, tble, searchType){
       if (!deviceFound){
           window.alert('Device Not Found');
           }
+        clearInputs();
     })
 
 }
@@ -105,7 +116,6 @@ function passToSearch(searchInput, tble, type){
 //deletes device via searching for matching assetTag or SerialNumber
 function deleteDevice(){
   var device = document.getElementById('deleteInput').value.toUpperCase();
-  document.getElementById('addDevice').reset();
   document.getElementById('space').innerHTML = '';
   var deleted = false;
   laptopRef.once('value')
@@ -124,6 +134,7 @@ function deleteDevice(){
   if (!deleted) {
     document.getElementById('space').innerHTML = "Device Not Found, can not delete!";
   }
+  clearInputs();
 }
 //adds device to database
 function addDevice(){
@@ -143,6 +154,7 @@ function addDevice(){
   databaseFire.database().ref("Laptops" + '/' + storage.toUpperCase()).set(device);
   document.getElementById('addNotification').style.display = "block";
   document.getElementById('addNotification').innerHTML = "Added device";
+  clearInputs();
 }
 /*http://sheetjs.com/demos/Export2Excel.js
 https://github.com/SheetJS/js-xlsx
@@ -192,6 +204,7 @@ function changeValues(){
       })
     })
     window.setTimeout(view,3000);
+    clearInputs();
   }
 
 function searchFound(found){
@@ -205,6 +218,7 @@ function serviceRequest(){
   var device = document.getElementById('serviceInput').value;
   var service = document.getElementById('serviceEdit').value;
   var reporter = document.getElementById('serviceReporter').value;
+  clearInputs();
   laptopRef.once('value')
     .then(function(dataSnapshot){
       dataSnapshot.forEach(function(snapShot){
@@ -230,6 +244,7 @@ function borrowFound(found){
 function borrowRequest(){
   var device = document.getElementById('borrowInput').value;
   var borrower = document.getElementById('borrowEdit').value;
+  clearInputs();
   laptopRef.once('value')
     .then(function(dataSnapshot){
       dataSnapshot.forEach(function(snapShot){

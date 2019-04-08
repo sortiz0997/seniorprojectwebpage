@@ -38,10 +38,19 @@
     </table>
     <br/>
     </div>
-    <div id="editDevice">
+    <div id="deleteDevice">
         <p id="space"></p>
-      <form id="editConfirm" action="#" onsubmit="passToSearch('editInput', 'inventoryTable', 'edits')">
-        <label for="editInput"><b>Enter serial number or asset tag from device:</b></label>
+      <form id="deleteConfirm" action="#" onsubmit="deleteDevice(); return false;">
+        <label for="deleteInput"><b>Enter serial number or asset tag from device to delete: </b></label>
+        <input type="text" id="deleteInput" required/>
+        <br/>
+        <button type="submit"><b>Delete Device</b></button>
+      </form>
+    </div>
+    <br/>
+    <div id="editDevice">
+      <form id="editConfirm" action="#" onsubmit="passToSearch('editInput', 'inventoryTable', 'edits'); return false;">
+        <label for="editInput"><b>Enter serial number or asset tag from device to Edit:</b></label>
         <input type="text" id="editInput" required/> &nbsp;
         <button type="submit"><b>Edit Device</b></button>
       </form>
