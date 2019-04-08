@@ -171,6 +171,7 @@ function editDevice(found){
     if(found){
       document.getElementById('editSpace').style.display = 'block';
       document.getElementById('editConfirm').style.display = 'none';
+      document.getElementById('deleteConfirm').style.display = 'none';
       document.getElementById('editConfirm').reset();
     }
 }
