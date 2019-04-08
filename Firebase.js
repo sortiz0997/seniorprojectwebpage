@@ -72,7 +72,7 @@ function clearInvTable(tble){
   }
 }
 //searches for device via AssetTag or SEricalNumber
-function searchDevice(searchCriteria, tble, deviceEdits){
+function searchDevice(searchCriteria, tble, searchType){
    var deviceFound;
   searchCriteria = searchCriteria.toUpperCase();
   document.getElementById('space').style.display = 'none';
@@ -84,8 +84,12 @@ function searchDevice(searchCriteria, tble, deviceEdits){
         if (snapShot.child('assetTag').val() == searchCriteria|| snapShot.child('serialNumber').val() == searchCriteria) {
           viewingArray(snapShot,tble);
           deviceFound = true;
-          if(deviceEdits)
+          if(searchType == 'edits')
             editDevice(true);
+          else if(searchType == 'service')
+            serviceFound(true);
+          else if(searchType == 'borrow')
+            borrowFound(true);
         return true;
         }
       });
@@ -95,12 +99,8 @@ function searchDevice(searchCriteria, tble, deviceEdits){
     })
 
 }
-function passToSearch(search, tble){
-  if (search =='search')
-    searchDevice(document.getElementById('searchInput').value.toUpperCase(), tble, false);
-  else {
-    searchDevice(document.getElementById('editInput').value.toUpperCase(), tble, true);
-  }
+function passToSearch(searchInput, tble, type){
+    searchDevice(document.getElementById(searchInput).value.toUpperCase(), tble, type);
 }
 //deletes device via searching for matching assetTag or SerialNumber
 function deleteDevice(){
@@ -144,42 +144,15 @@ function addDevice(){
   document.getElementById('addNotification').style.display = "block";
   document.getElementById('addNotification').innerHTML = "Added device";
 }
-// Code adapted from https://www.codexworld.com/export-html-table-data-to-excel-using-javascript/
+/*http://sheetjs.com/demos/Export2Excel.js
+https://github.com/SheetJS/js-xlsx
+*/
 function exportTableToExcel(id, fn){
  // function export_table_to_excel(id, fn) {
     var wb = XLSX.utils.table_to_book(document.getElementById(id), {sheet:"Sheet JS"});
     var fname = fn + '.xls'|| 'test.' + 'xls';
     XLSX.writeFile(wb, fname);
   }
-  /* view();
-  var downloadLink;
-  var dataType = 'application/vnd.ms-excel';
-  var tableSelect = document.getElementById(tableID);
-  var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
-  // Specify file name
-  filename = filename?filename+'.xls':'excel_data.xls';
-  
-  // Create download link element
-  downloadLink = document.createElement("a");
-  
-  document.body.appendChild(downloadLink);
-  
-  if(navigator.msSaveOrOpenBlob){
-      var blob = new Blob(['\ufeff', tableHTML], {
-          type: dataType
-      });
-      navigator.msSaveOrOpenBlob( blob, filename);
-  }else{
-      // Create a link to the file
-      downloadLink.href = 'data:' + dataType + ', ' + tableHTML;
-  
-      // Setting the file name
-      downloadLink.download = filename;
-      
-      //triggering the function
-      downloadLink.click(); 
-  }
-} */
 
 function editDevice(found){
     document.getElementById('deviceValue').innerHTML = document.getElementById('editInput').value;
@@ -232,8 +205,46 @@ function changeValues(){
   })
   window.setTimeout(view,3000);
 }
-
+function searchFound(found){
+  if(found){
+    document.getElementById('serviceConfirm').style.display = 'none';
+    document.getElementById('serviceTble').style.display = 'none';
+    document.getElementById('service').style.display = 'block';
+  }
+}
 function serviceRequest(){
-  var service = document.getElementById('serviceEdit').innerHTML;
-
+  var device = document.getElementById('serviceInput').value;
+  var service = document.getElementById('serviceEdit').value;
+  var reporter = document.getElementById('serviceReporter').value;
+  laptopRef.once('value')
+    .then(function(dataSnapshot){
+      dataSnapshot.forEach(function(snapShot){
+        if(snapShot.child('assetTag').val() == device || snapShot.child('serialNumber').val() == device){
+          var ref = databaseFire.database().ref('Laptops/' + snapShot.key);
+          ref.update({serviceStatus: reporter + ': ' + service});
+          return true;
+        }
+      })
+    })
+}
+function borrowFound(found){
+  if(found){
+    document.getElementById('borrowConfirm').style.display = 'none';
+    document.getElementById('borrowTble').style.display = 'none';
+    document.getElementById('borrow').style.display = 'block';
+  }
+}
+function borrowRequest(){
+  var device = document.getElementById('borrowInput').value;
+  var borrower = document.getElementById('borrowEdit').value;
+  laptopRef.once('value')
+    .then(function(dataSnapshot){
+      dataSnapshot.forEach(function(snapShot){
+        if(snapShot.child('assetTag').val() == device || snapShot.child('serialNumber').val() == device){
+          var ref = databaseFire.database().ref('Laptops/' + snapShot.key);
+          ref.update({borrow: borrower});
+          return true;
+        }
+      })
+    })
 }

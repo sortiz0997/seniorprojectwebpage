@@ -40,7 +40,7 @@
     </div>
     <div id="editDevice">
         <p id="space"></p>
-      <form id="editConfirm" action="#" onsubmit="passToSearch('edit', 'inventoryTable')">
+      <form id="editConfirm" action="#" onsubmit="passToSearch('editInput', 'inventoryTable', 'edits')">
         <label for="editInput"><b>Enter serial number or asset tag from device:</b></label>
         <input type="text" id="editInput" required/> &nbsp;
         <button type="submit"><b>Edit Device</b></button>
@@ -58,14 +58,6 @@
           <input type="text" id="assetEdit" placeholder="Asset Tag"/>
           <br>
 
-          <label for="borrowEdit"><b>Enter ID # or Name of borrower:</b></label>
-          <input type="text" id="borrowEdit" placeholder="Borrow"/>
-          <br>
-
-          <label for="serviceEdit"><b>If device is displayed as in service and is now complete please enter "done". Else leave blank:</b></label>
-          <br>
-          <input type="text" id="serviceEdit" placeholder="Service"/>
-          <br>
           <button type="submit"><b>Edit Device</b></button>
         </form>
       </div>
