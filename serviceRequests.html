@@ -32,12 +32,12 @@
         </table>
         <br/>
         </div>
-      <form id="serviceConfirm" action="#" onsubmit="passToSearch('serviceInput','seviceTble', 'service')">
+      <form id="serviceConfirm" action="#" onsubmit="passToSearch('serviceInput','seviceTble', 'service'); return false;">
           <label for="serviceInput"><b>Enter serial number or asset tag from device: </b></label>
-          <input type="text" id="seviceInput" required/> &nbsp;
+          <input type="text" id="serviceInput" required/> &nbsp;
           <button type="submit"><b>Request Service</b></button>
       </form>
-          <form id="service" action="#" onsubmit="serviceRequest()" style="display:none">
+          <form id="service" action="#" onsubmit="serviceRequest(); return false;" style="display:none">
               <label for="serviceEdit"><b>If device is displayed as in service and is now complete please enter "false". Else enter the details for the service request:</b></label>
               <br>
               <input type="text" id="serviceEdit" placeholder="Service" required/>

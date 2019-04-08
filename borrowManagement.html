@@ -32,7 +32,7 @@
       </table>
       <br/>
       </div>
-    <form id="borrowConfirm" action="#" onsubmit="passToSearch('borrowInput','borrowTble', 'borrow')">
+    <form id="borrowConfirm" action="#" onsubmit="passToSearch('borrowInput','borrowTble', 'borrow'); return false;">
         <label for="borrowInput"><b>Enter serial number or asset tag from device: </b></label>
         <input type="text" id="borrowInput" required/> &nbsp;
         <button type="submit"><b>Search for device</b></button>
