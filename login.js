@@ -16,8 +16,7 @@ function login(){
   loginRef.once('value')
   .then(function(dataSnapshot)  {
     dataSnapshot.forEach(function(snapShot) {
-      if(snapShot.child('Username').val() == document.getElementById('userName').value && document.getElementById('passWord').value == snapShot.child('Password').val()){
-        console.log('match');
+      if(snapShot.child('Username').val() == document.getElementById('userName').value.toUpperCase() && document.getElementById('passWord').value.toUpperCase() == snapShot.child('Password').val()){
         window.location.href = 'EventoryDraft1.html';
         return true;
       } else  {
