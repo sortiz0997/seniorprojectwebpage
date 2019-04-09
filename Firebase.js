@@ -208,6 +208,9 @@ function changeValues(){
   }
 
 function serviceFound(found){
+  document.createElement('p').setAttribute('id','deviceService');
+  document.getElementById('deviceService').style.display = 'none';
+  document.getElementById('deviceService').innerHTML = document.getElementById('serviceInput').value;
   if(found){
     document.getElementById('serviceConfirm').style.display = 'none';
     document.getElementById('serviceTable').style.display = 'block';
@@ -215,7 +218,7 @@ function serviceFound(found){
   }
 }
 function serviceRequest(){
-  var device = document.getElementById('serviceInput').value;
+  var device = document.getElementById('deviceService').innerHTML;
   var service = document.getElementById('serviceEdit').value;
   var reporter = document.getElementById('serviceReporter').value;
   clearInputs();
