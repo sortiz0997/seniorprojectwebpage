@@ -56,25 +56,31 @@ function createNewAccount(){
     databaseFire.database().ref('Logins/').push(login);
     window.alert("Account Created");
     clearInputs();
-    document.location.href ='loginStart.html';
+    window.location.href ='loginStart.html';
   }
 }
 function loginExists(email,usrName,passWord){
   console.log('checked');
   var found;
   loginRef.once('value')
-  .then(function(dataSnapshot)  {
-    dataSnapshot.forEach(function(snapShot) {
+  .then( found = function(dataSnapshot)  {
+    var found;
+    dataSnapshot.forEach(found = function(snapShot) {
+      var found = false;
       if(snapShot.child('Email') == email && snapShot.child('Username').val() == usrName && snapShot.child('Password').val() == passWord){
         found = true;
         return true;
       }
-    });
+      console.log("for each: " + found);
+      return found;
+    })
     console.log("function data: " + found);
-    if (found)
+    if (found){
       return true;
-    else
+    }
+    else 
     return false;
   });
+  console.log("loginExists: " + found);
   return found;
 }
