@@ -6,15 +6,10 @@
     <script src="Firebase.js"></script>
     <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
   </head>
-  <style>
-    #space{
-	    display:none;
-    }
-  </style>
   <body onpageshow="view()">
       <h1> Welcome to the Public School E-ventory System!</h1>
       <div id="navigationBar">
-        <ul id="links"style="display:in-line">
+        <ul id="links" style="display:in-line">
           <li id="mainAdmin"><a href="./EventoryDraft1.html">Main Page</a></li>
           <li id="viewAdmin"><a href="./viewInventory.html">View Device Inventory</a></li>
           <li id="addAdmin"><a href="./addDevice.html">Add New Device</a></li>
@@ -39,7 +34,7 @@
     <br/>
     </div>
     <div id="deleteDevice">
-        <p id="space"></p>
+        <p id="space" style="display:none"</p>
       <form id="deleteConfirm" action="#" onsubmit="deleteDevice(); return false;">
         <label for="deleteInput"><b>Enter serial number or asset tag from device to delete: </b></label>
         <input type="text" id="deleteInput" required/>

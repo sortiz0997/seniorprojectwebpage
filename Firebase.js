@@ -114,7 +114,8 @@ function passToSearch(searchInput, tble, type){
 //deletes device via searching for matching assetTag or SerialNumber
 function deleteDevice(){
   var device = document.getElementById('deleteInput').value.toUpperCase();
-  document.getElementById('space').innerHTML = '';
+  document.getElementById('space').innerHTML = "";
+  document.getElementById('space').style.display = "block";
   var deleted = false;
   laptopRef.once('value')
   .then(function(dataSnapshot)  {
@@ -206,7 +207,7 @@ function changeValues(){
     clearInputs();
   }
 
-function searchFound(found){
+function serviceFound(found){
   if(found){
     document.getElementById('serviceConfirm').style.display = 'none';
     document.getElementById('serviceTble').style.display = 'none';
@@ -236,7 +237,7 @@ function serviceRequest(){
 function borrowFound(found){
   if(found){
     document.getElementById('borrowConfirm').style.display = 'none';
-    document.getElementById('borrowTble').style.display = 'none';
+    document.getElementById('borrowTble').style.display = 'block';
     document.getElementById('borrow').style.display = 'block';
   }
 }
