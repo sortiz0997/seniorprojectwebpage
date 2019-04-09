@@ -209,7 +209,7 @@ function changeValues(){
 
 function serviceFound(found){
   document.createElement('p').setAttribute('id','deviceService');
-  document.getElementById.setAttribute('style', 'display:none');
+  document.getElementById('p').setAttribute('style', 'display:none');
   document.getElementById('deviceService').innerHTML = document.getElementById('serviceInput').value;
   if(found){
     document.getElementById('serviceConfirm').style.display = 'none';
