@@ -210,7 +210,7 @@ function changeValues(){
 function serviceFound(found){
   if(found){
     document.getElementById('serviceConfirm').style.display = 'none';
-    document.getElementById('serviceTble').style.display = 'block';
+    document.getElementById('serviceTable').style.display = 'block';
     document.getElementById('service').style.display = 'block';
   }
 }
