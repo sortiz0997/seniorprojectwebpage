@@ -40,10 +40,15 @@ function createNewAccount(){
   var email = document.getElementById('newEmail').value;
   var accUserName = document.getElementById('newUsrname').value;
   var accPassWord = document.getElementById('newPassword').value;
-  var login = {Username:accUserName, Password: accPassWord, Email: email};
+  var access;
+  if(document.getElementById('admin').checked == true)
+    access = 'admin';
+  else 
+    access = 'teacher';
+  var login = {Username:accUserName.toUpperCase(), Password: accPassWord.toUpperCase(), Email: email.toUpperCase(), Privilege: access.toUpperCase()};
   if(document.getElementById('newPassword').value != document.getElementById('confirmPassword').value){
     window.alert("Passwords Don't Match!");
-  } else if(loginExists(email, accUserName, accPassWord)){
+  } else if(loginExists(email.toUpperCase(), accUserName.toUpperCase(), accPassWord.toUpperCase())){
     
     window.alert('Account Already Exsists');
   }
@@ -51,9 +56,8 @@ function createNewAccount(){
     databaseFire.database().ref('Logins/').push(login);
     window.alert("Account Created");
     clearInputs();
-    window.location.href ='index.html';
+    document.location.href ='loginStart.html';
   }
-  return false;
 }
 function loginExists(email,usrName,passWord){
   console.log('checked');
@@ -66,6 +70,7 @@ function loginExists(email,usrName,passWord){
         return true;
       }
     });
+    console.log("function data: " + found);
     if (found)
       return true;
     else
