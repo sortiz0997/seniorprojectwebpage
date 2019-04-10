@@ -68,7 +68,7 @@ function loginExists(email,usrName,passWord){
       var found = false;
       if(snapShot.child('Email') == email && snapShot.child('Username').val() == usrName && snapShot.child('Password').val() == passWord){
         found = true;
-        return true;
+      //  return true;
       }
       console.log("for each: " + found);
       return found;
