@@ -62,9 +62,9 @@ function loginExists(email,usrName,passWord){
   console.log('checked');
   var found;
   loginRef.once('value')
-  .then( found = function(dataSnapshot)  {
+  .then(function(dataSnapshot)  {
     var found;
-    dataSnapshot.forEach(found = function(snapShot) {
+    dataSnapshot.forEach(function(snapShot) {
       var found = false;
       if(snapShot.child('Email') == email && snapShot.child('Username').val() == usrName && snapShot.child('Password').val() == passWord){
         found = true;
