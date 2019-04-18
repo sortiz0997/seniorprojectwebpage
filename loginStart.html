@@ -27,13 +27,16 @@ input[type=submit] {
   background-color: #f1f1f1;
   padding: 20px;
 }
+#newUser {
+  margin: 30px;
+}
 </style>
 </head>
 <body>
     <h1> Welcome to the Public School E-ventory System!</h1>
     <p><b>Please Login</b></p>
     <br/>
-  <div id="loginDiv">
+  <div id="loginDiv" class="container">
 		<p id='notification'></p>
 		<form id='loginForm' action="#" onsubmit="login(); return false;" autocomplete="off">
 			<label for="userName"><b>Username</b></label>
@@ -43,10 +46,12 @@ input[type=submit] {
 			<input type="password" id="passWord" placeholder="Enter Your Pasword" required/>
 			<br>
 			<button type="submit">Login</button>
-			<br>
-			<label>New User? &nbsp;
+      <br>
+      <div id="newUser">
+			<label style="font-size: 25px"><b>New User?</b> &nbsp;
 				<button type="button" onclick="window.location.href='createNew.html'">Create New Account</button>
-				</label>
+        </label>
+      </div>
     </form>
     </div>
 </body>
