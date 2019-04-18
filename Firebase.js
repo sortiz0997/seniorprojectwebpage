@@ -83,7 +83,8 @@ function clearInputs(){
 
 //searches for device via AssetTag or SEricalNumber
 function searchDevice(searchCriteria, tble, searchType){
-   var deviceFound;
+  clearInputs(); 
+  var deviceFound;
   searchCriteria = searchCriteria.toUpperCase();
    clearInvTable(tble);
     laptopRef.once('value')
@@ -104,7 +105,7 @@ function searchDevice(searchCriteria, tble, searchType){
       if (!deviceFound){
           window.alert('Device Not Found');
           }
-        clearInputs();
+        
     })
 
 }
