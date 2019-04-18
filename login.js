@@ -17,9 +17,10 @@ function login(){
   .then(function(dataSnapshot)  {
     dataSnapshot.forEach(function(snapShot) {
       if(snapShot.child('Username').val() == document.getElementById('userName').value.toUpperCase() && document.getElementById('passWord').value.toUpperCase() == snapShot.child('Password').val()){
-        window.setTimeout(function(){window.location.href = 'EventoryDraft1.html'}, 1000);
+        window.location.href = 'EventoryDraft1.html';
         return true;
       } else  {
+        window.setTimeout(2000);
         document.createElement('p').setAttribute('id','notification');
         document.getElementById('notification').innerHTML = 'Account Does Not Exists, Please Create a New Account';
       }
