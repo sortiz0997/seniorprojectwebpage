@@ -14,7 +14,7 @@
   float: left;
   display: flex;
   justify-content: space-around;
-  background: #B7BABF;
+  background: rgb(67, 130, 247);
 }
 
 #navBar li a{
