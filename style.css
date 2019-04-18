@@ -14,14 +14,13 @@
   float: left;
   display: flex;
   justify-content: space-around;
-  background: #2461D5;
+  background: #B7BABF;
 }
 
 #navBar li a{
   display: block;
   width: 100%;
   font: bold 20px "Avantgarde";
- /*  background: #2461D5; */
   margin: 10px;
   color: #FFC300;
 }
