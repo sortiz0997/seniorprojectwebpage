@@ -7,38 +7,41 @@
       <link rel="stylesheet" href="style.css"/>
   </head>
   <body>
-      <h1> Welcome to the Public School E-ventory System!</h1>
-      <div id="wrapper">
-        <ul id="navBar">
-          <li id="mainAdmin"><a href="./EventoryDraft1.html">Main Page</a></li>
-          <li id="viewAdmin"><a href="./viewInventory.html">View Device Inventory</a></li>
-          <li id="addAdmin"><a href="./addDevice.html">Add New Device</a></li>
-          <li id="locationSearch"><a href="./locationSearch">Search for Device Storage Location</a></li>
-          <li id="serviceRequest"><a href="./serviceRequests.html">Request Service</a></li>
-          <li id="borrowManage"><a href="./borrowManagement">Manage Borrowing</a></li>
-        </ul>
-      </div>
-  </body>
-  <div id="searchTable">
-      <table id="searchTble">
-        <thead>
-          <tr>
-            <th>Device Model</th>
-            <th>Storage Location</th>
-            <th>Serial Number</th>
-            <th>Asset Tag</th>
-            <th>In Service?</th>
-            <th>Borrowed?</th>
-          </tr>
-        </thead>
-      </table>
-      <br/>
-      </div>
-      <p id="space" style="display:none"></p>
-  <form id="search" action="#" onsubmit="passToSearch('searchInput','searchTble', 'search'); return false;">
-			<label for="searchInput"><b>Search for Device: </b></label>
-			<input type="text" id="searchInput" placeholder="Enter SerialNumber or AssetTag" required/>
-			&nbsp;
-			<button type="submit"><b>Search for Device</b></button>
-		</form>
+    <h1> Welcome to the Public School E-ventory System!</h1>
+    <div id="wrapper">
+      <ul id="navBar">
+        <li id="mainAdmin"><a href="./EventoryDraft1.html">Main Page</a></li>
+        <li id="viewAdmin"><a href="./viewInventory.html">View Device Inventory</a></li>
+        <li id="addAdmin"><a href="./addDevice.html">Add New Device</a></li>
+        <li id="locationSearch"><a href="./locationSearch">Search for Device Storage Location</a></li>
+        <li id="serviceRequest"><a href="./serviceRequests.html">Request Service</a></li>
+        <li id="borrowManage"><a href="./borrowManagement">Manage Borrowing</a></li>
+      </ul>
+    </div>
+    <div id="break">
+        <br/>
+    </div>
+    <div id="searchTable">
+        <table id="searchTble">
+          <thead>
+            <tr>
+              <th>Device Model</th>
+              <th>Storage Location</th>
+              <th>Serial Number</th>
+              <th>Asset Tag</th>
+              <th>In Service?</th>
+              <th>Borrowed?</th>
+            </tr>
+          </thead>
+        </table>
+        <br/>
+        </div>
+        <p id="space" style="display:none"></p>
+    <form id="search" action="#" onsubmit="passToSearch('searchInput','searchTble', 'search'); return false;">
+        <label for="searchInput"><b>Search for Device: </b></label>
+        <input type="text" id="searchInput" placeholder="Enter SerialNumber or AssetTag" required/>
+        &nbsp;
+        <button type="submit"><b>Search for Device</b></button>
+      </form>
+    </body>
 </html>

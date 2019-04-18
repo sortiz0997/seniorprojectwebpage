@@ -8,13 +8,15 @@
   list-style: none;
   margin: 5px;
   padding: 5px;
-  background: #2461D5;
 }
+
 #navBar li {
   float: left;
   display: flex;
-  justify-content: space-around
+  justify-content: space-around;
+  background: #2461D5;
 }
+
 #navBar li a{
   display: block;
   width: 100%;
@@ -27,8 +29,14 @@
   background-color:  #FD69FF;
 }
 
+#break{
+  margin-top: 60px;
+  margin-bottom: 60px;
+  position: relative;
+}
+
 input {
-  width: 60%;
+  width: 40%;
   padding: 12px;
   border: 1px solid #ccc;
   border-radius: 4px;
