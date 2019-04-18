@@ -1,0 +1,50 @@
+/* Style page for E-ventory Site
+ * CSS -style.css
+ */
+ body {
+  background-image: url("siteBackground.jpg")
+}
+#navBar {
+  list-style: none;
+  margin: 5px;
+  padding: 5px;
+  background: #2461D5;
+}
+#navBar li {
+/*   float: left;
+ */  display: flex;
+  justify-content: space-around
+}
+#navBar li a{
+  display: block;
+  width: 100%;
+  font: bold 20px "Avantgarde";
+ /*  background: #2461D5; */
+  margin: 10px;
+  color: #FFC300;
+}
+#navBar li a:hover{
+  background-color:  #FD69FF;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+}
+
+/* Style the submit button */
+input[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+}
+
+/* Style the container for inputs */
+.container {
+  background-color: #f1f1f1;
+  padding: 20px;
+}
