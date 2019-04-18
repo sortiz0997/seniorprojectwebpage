@@ -1,16 +1,43 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta charset="uft-8"/>
+	<meta name="robots" content="noindex"/>
 	<title>Public School E-ventory System</title>
 	<script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>
 	<script src = "Firebase.js" ></script>
+	<!--[if It IE>
+	<script src"//html5shiv.googlecode.com/svn/trunk/html.js"></script>
+	<![endif]-->
+
+<style>
+	#navBar {
+		list-style: none;
+		margin: 5px;
+		padding: 5px;
+	}
+	#navBar li {
+		float: left;
+	}
+	#navBar li a{
+		display: block;
+		width: 100px;
+		font: bold 20px "Avantgarde";
+		background: #0D11A7;
+		padding: 10px;
+		color: #FFC300;
+	}
+	#navBar li a:hover{
+		background-color:  #FD69FF;
+	}
+</style>
 
 </head>
 
 <body>
 	<h1> Welcome to the Public School E-ventory System!</h1>
-	<div id="navigationBar">
-		<ul id="links">
+	<div id="wrapper">
+		<ul id="navBar">
 			<li id="mainAdmin"><a href="./EventoryDraft1.html">Main Page</a></li>
 			<li id="viewAdmin"><a href="./viewInventory.html">View Device Inventory</a></li>
 			<li id="addAdmin"><a href="./addDevice.html">Add New Device</a></li>
