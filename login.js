@@ -17,7 +17,7 @@ function login(){
   .then(function(dataSnapshot)  {
     dataSnapshot.forEach(function(snapShot) {
       if(snapShot.child('Username').val() == document.getElementById('userName').value.toUpperCase() && document.getElementById('passWord').value.toUpperCase() == snapShot.child('Password').val()){
-        window.location.href = 'EventoryDraft1.html';
+        window.setTimeout(function(){window.location.href = 'EventoryDraft1.html'}, 1000);
         return true;
       } else  {
         document.createElement('p').setAttribute('id','notification');
@@ -47,9 +47,9 @@ function createNewAccount(){
   var login = {Username:accUserName.toUpperCase(), Password: accPassWord.toUpperCase(), Email: email.toUpperCase(), Privilege: access.toUpperCase()};
   if(document.getElementById('newPassword').value != document.getElementById('confirmPassword').value){
     window.alert("Passwords Don't Match!");
-  } else if(loginExists(email.toUpperCase(), accUserName.toUpperCase(), accPassWord.toUpperCase())){
+  /* } else if(loginExists(email.toUpperCase(), accUserName.toUpperCase(), accPassWord.toUpperCase())){
     
-    window.alert('Account Already Exsists');
+    window.alert('Account Already Exsists'); */
   }
     else  {
     databaseFire.database().ref('Logins/').push(login);
@@ -68,6 +68,7 @@ function loginExists(email,usrName,passWord){
       var found = false;
       if(snapShot.child('Email') == email && snapShot.child('Username').val() == usrName && snapShot.child('Password').val() == passWord){
         found = true;
+        console.log(found);
       //  return true;
       }
       console.log("for each: " + found);
