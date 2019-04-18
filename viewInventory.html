@@ -22,7 +22,9 @@
       <div id="break">
           <br/>
         </div>
-    <div id="deviceTable">
+        <button style="color:darkviolet" name="export" onclick="exportTableToExcel('inventoryTable', 'exportedInventory')">Click to export</button>
+        <button style="color:blue" name="view" onclick="view()">Click to view inventory</button>
+    <div id="deviceTable" style="overflow-x:auto">
     <table id="inventoryTable">
       <thead>
         <tr>
@@ -69,8 +71,7 @@
           <button type="submit"><b>Edit Device</b></button>
         </form>
       </div>
+
     </div>
-    <button style="color:darkviolet" name="export" onclick="exportTableToExcel('inventoryTable', 'exportedInventory')">Click to export</button>
-    <button style="color:blue" name="view" onclick="view()">Click to view inventory</button>
   </body>
 </html>
