@@ -28,6 +28,8 @@ function login(){
           document.createElement('p').setAttribute('id','notification');
         document.getElementById('notification').innerHTML = 'Account Does Not Exists, Please Create a New Account';
         }
+      }, function(error){
+        window.alert("An error has occured.\n Please reload or check your connection.")
       })
         /* window.location.href = 'EventoryDraft1.html';
         return true;
