@@ -124,17 +124,13 @@ function deleteDevice(){
       if (snapShot.child('assetTag').val() == device|| snapShot.child('serialNumber').val() == device)  {
         var ref = databaseFire.database().ref('Laptops/'+snapShot.key);
         ref.remove();
-        deleted = true;
-        document.getElementById('space').innerHTML = 'Device Deleted';
+        window.alert(Device + " has been deleted.");
         view();
         return true;
       }
     })
   })
-  if (!deleted) {
-    document.getElementById('space').innerHTML = "Device Not Found, can not delete!";
-  }
-  clearInputs();
+    clearInputs();
 }
 //adds device to database
 function addDevice(){
