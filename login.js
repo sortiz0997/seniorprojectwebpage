@@ -65,9 +65,9 @@ function createNewAccount(){
   var login = {Username:accUserName.toUpperCase(), Password: accPassWord.toUpperCase(), Email: email.toUpperCase(), Privilege: access.toUpperCase()};
   if(document.getElementById('newPassword').value != document.getElementById('confirmPassword').value){
     window.alert("Passwords Don't Match!");
-  /* } else if(loginExists(email.toUpperCase(), accUserName.toUpperCase(), accPassWord.toUpperCase())){
+  } else if(loginExists(email.toUpperCase(), accUserName.toUpperCase(), accPassWord.toUpperCase())){
     
-    window.alert('Account Already Exsists'); */
+    window.alert('Account Already Exsists');
   }
     else  {
     databaseFire.database().ref('Logins/').push(login);
@@ -78,16 +78,13 @@ function createNewAccount(){
 }
 function loginExists(email,usrName,passWord){
   console.log('checked');
-  var found;
   loginRef.once('value')
   .then(function(dataSnapshot)  {
     var found;
-    dataSnapshot.forEach(function(snapShot) {
-      var found = false;
+    found = dataSnapshot.forEach(function(snapShot) {
       if(snapShot.child('Email') == email && snapShot.child('Username').val() == usrName && snapShot.child('Password').val() == passWord){
-        found = true;
         console.log(found);
-      //  return true;
+        return true;
       }
       console.log("for each: " + found);
       return found;
@@ -98,7 +95,9 @@ function loginExists(email,usrName,passWord){
     }
     else 
     return false;
-  });
-  console.log("loginExists: " + found);
-  return found;
+  }).then(function(found){
+    console.log("loginExists: " + found);
+    return found;
+  })
+  
 }
