@@ -233,7 +233,7 @@ function borrowFound(found, device){
   if(found){
     document.getElementById('borrowConfirm').style.display = 'none';
     document.getElementById('borrowTble').style.display = 'block';
-    document.getElementById('borrow').style.display = 'block';
+    document.getElementById('borrowForm').style.display = 'block';
   }
 }
 function borrowRequest(){
