@@ -94,16 +94,16 @@ function searchDevice(searchCriteria, tble, searchType){
           viewingArray(snapShot,tble);
           deviceFound = true;
           if(searchType == 'edits')
-            editDevice(true);
+            editDevice(true, searchCriteria);
           else if(searchType == 'service')
-            serviceFound(true);
+            serviceFound(true,searchCriteria);
           else if(searchType == 'borrow')
-            borrowFound(true);
+            borrowFound(true,searchCriteria);
         return true;
         }
       });
       if (!deviceFound){
-          window.alert('Device Not Found');
+          window.alert('Device " ' + searchCriteria +' " Not Found');
           }
         
     })
@@ -166,8 +166,8 @@ function exportTableToExcel(id, fn){
     XLSX.writeFile(wb, fname);
   }
 
-function editDevice(found){
-    document.getElementById('deviceValue').innerHTML = document.getElementById('editInput').value;
+function editDevice(found, device){
+    document.getElementById('deviceValue').innerHTML = device;
     if(found){
       document.getElementById('editSpace').style.display = 'block';
       document.getElementById('editConfirm').style.display = 'none';
@@ -208,8 +208,7 @@ function changeValues(){
     clearInputs();
   }
 
-function serviceFound(found){
-  var device = document.getElementById('serviceInput').value;
+function serviceFound(found, device){
   document.getElementById('deviceService').innerHTML = device;
   if(found){
     document.getElementById('serviceConfirm').style.display = 'none';
@@ -240,7 +239,8 @@ function serviceRequest(){
       })
     })
 }
-function borrowFound(found){
+function borrowFound(found, device){
+  document.getElementById('borrowDevice').innerHTML = device;
   if(found){
     document.getElementById('borrowConfirm').style.display = 'none';
     document.getElementById('borrowTble').style.display = 'block';
