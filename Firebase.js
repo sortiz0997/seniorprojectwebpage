@@ -209,7 +209,8 @@ function changeValues(){
   }
 
 function serviceFound(found){
-  document.getElementById('deviceService').innerHTML = document.getElementById('serviceInput').value;
+  var device = document.getElementById('serviceInput').value;
+  document.getElementById('deviceService').innerHTML = device;
   if(found){
     document.getElementById('serviceConfirm').style.display = 'none';
     document.getElementById('serviceTable').style.display = 'block';
