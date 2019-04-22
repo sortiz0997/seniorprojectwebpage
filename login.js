@@ -21,17 +21,18 @@ function login(){
        return true;
       }
     })
-  }).then(function(outcome) {
-        if(outcome  == true){
-          window.location.href = 'EventoryDraft1.html';
-        }
-        else {
-          document.createElement('p').setAttribute('id','notification');
-        document.getElementById('notification').innerHTML = 'Account Does Not Exists, Please Create a New Account';
-        }
-      }, function(error){
-        window.alert("An error has occured.\nPlease reload or check your connection.\n" + error)
-      })
+    .then(function(outcome) {
+      if(outcome  == true){
+        window.location.href = 'EventoryDraft1.html';
+      }
+      else {
+        document.createElement('p').setAttribute('id','notification');
+      document.getElementById('notification').innerHTML = 'Account Does Not Exists, Please Create a New Account';
+      }
+    }, function(error){
+      window.alert("An error has occured.\nPlease reload or check your connection.\n" + error)
+    })
+  })
         /* window.location.href = 'EventoryDraft1.html';
         return true;
       } else  {
