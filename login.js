@@ -17,7 +17,8 @@ function login(){
   .then(function(dataSnapshot)  {
     dataSnapshot.forEach(function(snapShot) {
       if(snapShot.child('Username').val() == document.getElementById('userName').value.toUpperCase() && document.getElementById('passWord').value.toUpperCase() == snapShot.child('Password').val()){
-        return resolve(true);
+       // return resolve(true);
+       return true;
       }
     })
   }).then(function(outcome) {
