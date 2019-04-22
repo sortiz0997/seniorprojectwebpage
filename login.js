@@ -15,23 +15,26 @@ var loginRef = databaseFire.database().ref('Logins/');
 function login(){
   loginRef.once('value')
   .then(function(dataSnapshot)  {
-    dataSnapshot.forEach(function(snapShot) {
+    var found;
+    found = dataSnapshot.forEach(function(snapShot) {
       if(snapShot.child('Username').val() == document.getElementById('userName').value.toUpperCase() && document.getElementById('passWord').value.toUpperCase() == snapShot.child('Password').val()){
        // return resolve(true);
        return true;
       }
-    })
-    .then(function(outcome) {
-      if(outcome  == true){
-        window.location.href = 'EventoryDraft1.html';
-      }
-      else {
-        document.createElement('p').setAttribute('id','notification');
-      document.getElementById('notification').innerHTML = 'Account Does Not Exists, Please Create a New Account';
-      }
-    }, function(error){
-      window.alert("An error has occured.\nPlease reload or check your connection.\n" + error)
-    })
+    });
+    console.log(found);
+    return found;
+  })
+  .then(function(outcome) {
+    if(outcome  == true){
+      window.location.href = 'EventoryDraft1.html';
+    }
+    else {
+      document.createElement('p').setAttribute('id','notification');
+    document.getElementById('notification').innerHTML = 'Account Does Not Exists, Please Create a New Account';
+    }
+  }, function(error){
+    window.alert("An error has occured.\nPlease reload or check your connection.\n" + error)
   })
         /* window.location.href = 'EventoryDraft1.html';
         return true;
