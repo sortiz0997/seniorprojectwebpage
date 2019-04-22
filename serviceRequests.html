@@ -37,19 +37,19 @@
         <br/>
         </div>
       <p id="deviceService" style="display:none"></p>
-      <form id="serviceConfirm" action="#" onsubmit="passToSearch('serviceInput','serviceTble', 'service'); return false;">
+      <form id="serviceConfirm" action="#" onsubmit="return false;">
           <label for="serviceInput"><b>Enter serial number or asset tag from device: </b></label>
           <input type="text" id="serviceInput" required/> &nbsp;
-          <button type="submit"><b>Request Service</b></button>
+          <button type="submit" onclick="passToSearch('serviceInput','serviceTble', 'service')"><b>Request Service</b></button>
       </form>
-          <form id="service" action="#" onsubmit="serviceRequest(); return false;" style="display:none">
+          <form id="service" action="#" onsubmit="return false;" style="display:none">
               <label for="serviceEdit"><b>If device is displayed as in service and is now complete please enter "false". Else enter the details for the service request:</b></label>
               <br>
               <input type="text" id="serviceEdit" placeholder="Service" required/>
               <br>
               <label for="serviceReporter"><b>Name of person reporting service: </b></label>
               <input type="text" id="serviceReporter" placeholder="Reporter Name" />
-              <button type="submit"><b>Request Service</b></button>
+              <button type="submit" onclick="serviceRequest()"><b>Request Service</b></button>
             </form>
   </body>
 </html>
