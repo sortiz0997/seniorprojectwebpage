@@ -216,7 +216,6 @@ function serviceRequest(){
   var device = document.getElementById('deviceService').innerHTML;
   var service = document.getElementById('serviceEdit').value;
   var reporter = document.getElementById('serviceReporter').value;
-  clearInputs();
   laptopRef.once('value')
     .then(function(dataSnapshot){
       dataSnapshot.forEach(function(snapShot){
@@ -230,6 +229,7 @@ function serviceRequest(){
         }
       })
     })
+    clearInputs();
 }
 function borrowFound(found, device){
   document.getElementById('borrowDevice').innerHTML = device;
