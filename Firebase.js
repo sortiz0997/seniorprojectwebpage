@@ -248,7 +248,7 @@ function borrowFound(found, device){
   }
 }
 function borrowRequest(){
-  var device = document.getElementById('borrowInput').value;
+  var device = document.getElementById('borrowDevice').innerHTML;
   var borrower = document.getElementById('borrowEdit').value;
   clearInputs();
   laptopRef.once('value')

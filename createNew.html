@@ -58,7 +58,7 @@
     <h3>Create New Account</h3>
     <p></p>
     <div class="container">
-        <form id="newAccount" action='#' onsubmit='createNewAccount()' autocomplete="off">
+        <form id="newAccount" action='#' onsubmit='return false' autocomplete="off">
         <label for="newEmail" class="login"><b>Email</b></label>
         <input type="text" id="newEmail" placeholder="Enter Your Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Please Enter a Valid Email Address" required/>
         <br/>
@@ -76,7 +76,7 @@
         <label id='privLabel'><input type="radio" id="admin" name="privilige" required/><b>Adminstrator</b></label>
         <label id="privLabel"><input type="radio" id="teacher" name="privilige"/><b>Teacher</b></label>
         <br/>
-        <input type="submit" value="Submit">
+        <input type="submit" value="Submit" onclick="createNewAccount()">
       </form>
     </div>
     <div id="break">
