@@ -86,8 +86,6 @@ function loginExists(email,usrName,passWord){
         console.log(found);
         return true;
       }
-      console.log("for each: " + found);
-      return found;
     })
     console.log("function data: " + found);
     if (found){
