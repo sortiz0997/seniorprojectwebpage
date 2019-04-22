@@ -220,16 +220,12 @@ function serviceRequest(){
   laptopRef.once('value')
     .then(function(dataSnapshot){
       dataSnapshot.forEach(function(snapShot){
-        console.log("Searching");
         if(snapShot.child('assetTag').val() == device || snapShot.child('serialNumber').val() == device){
-          console.log("found match");
           var ref = databaseFire.database().ref('Laptops/' + snapShot.key);
           if(service == 'false')
             ref.update({serviceStatus: service});
           else
-            console.log("updating");
             ref.update({serviceStatus: reporter + ': ' + service});
-          
           return true;
         }
       })
