@@ -115,16 +115,13 @@ function passToSearch(searchInput, tble, type){
 //deletes device via searching for matching assetTag or SerialNumber
 function deleteDevice(){
   var device = document.getElementById('deleteInput').value.toUpperCase();
-  document.getElementById('space').innerHTML = "";
-  document.getElementById('space').style.display = "block";
-  var deleted = false;
   laptopRef.once('value')
   .then(function(dataSnapshot)  {
     dataSnapshot.forEach(function(snapShot) {
       if (snapShot.child('assetTag').val() == device|| snapShot.child('serialNumber').val() == device)  {
         var ref = databaseFire.database().ref('Laptops/'+snapShot.key);
         ref.remove();
-        window.alert(Device + " has been deleted.");
+        window.alert(device + " has been deleted.");
         view();
         return true;
       }
