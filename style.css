@@ -65,3 +65,8 @@ p {
 th, td {
   padding: 10px;
 }
+table {
+  overflow: auto;
+  height: 200px;
+  width: 100%;
+}
