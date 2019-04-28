@@ -67,6 +67,7 @@ p {
 }
 #tableWrapper {
   position: relative;
+  margin: 30px;
 }
 #divTable {
   height: 150px;
