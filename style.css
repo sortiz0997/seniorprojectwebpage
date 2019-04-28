@@ -32,7 +32,7 @@
   background-color:  #FD69FF;
 }
 
-#break{
+.pageContent {
   margin: 20px;
   position: relative;
 }
