@@ -65,17 +65,24 @@ p {
   font-family: "FreeMono", monospace;
   font-size: 15px;
 }
-th, td {
-  padding: 10px;
+#deviceTable {
+  overflow-y: auto;
 }
 table {
   margin: 15px;
-  overflow-y: auto;
   height: 100px;
   width: 100%;
+  font-size: 24px;
+}
+thead {
+  position: absolute;
+}
+
+th, td {
+  padding: 10px;
 }
 label {
-  font-size: 36px;
+  font-size: 24px;
   font-family: "Henny Penny",;
 }
 h1 {
