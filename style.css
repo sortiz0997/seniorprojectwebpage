@@ -7,6 +7,9 @@
  body {
   background-image: url("siteBackground.jpg")
 }
+#wrapper{
+  margin: 30px;
+}
 #navBar {
   list-style: none;
   margin: 5px;
@@ -33,6 +36,7 @@
 }
 
 .pageContent {
+  top: -30px;
   margin: 20px;
   position: relative;
 }
