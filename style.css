@@ -3,12 +3,8 @@
 /* Style page for E-ventory Site
  * CSS -style.css
  */
-
  body {
   background-image: url("siteBackground.jpg")
-}
-#wrapper{
-  margin: 30px;
 }
 #navBar {
   list-style: none;
@@ -26,8 +22,7 @@
 #navBar li a{
   display: block;
   width: 100%;
-  font: bold 20px;
-  font-family:  "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  font: bold 20px "Avantgarde";
   margin: 10px;
   color: #FFC300;
 }
@@ -35,9 +30,9 @@
   background-color:  #FD69FF;
 }
 
-.pageContent {
-  top: -30px;
-  margin: 20px;
+#break{
+  margin-top: 60px;
+  margin-bottom: 60px;
   position: relative;
 }
 .login{
@@ -69,25 +64,13 @@ p {
   font-family: "FreeMono", monospace;
   font-size: 15px;
 }
-#tableWrapper {
-  position: relative;
-  margin: 30px;
-}
-#divTable {
-  height: 150px;
-  overflow: auto;
-  margin-top: 20px;
-}
-
-#tableWrapper table, th, thead .text{
-  position:absolute;   
-  top:-20px;
-  z-index:2;
-  height:20px;
-  width:100%;
-}
-tbody {
+th, td {
   padding: 10px;
+}
+table {
+  overflow: auto;
+  height: 200px;
+  width: 100%;
 }
 label {
   font-size: 24px;
