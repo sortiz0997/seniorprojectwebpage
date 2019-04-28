@@ -1,6 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Acme');
+@import url('https://fonts.googleapis.com/css?family=Henny+Penny');
 /* Style page for E-ventory Site
  * CSS -style.css
  */
+
  body {
   background-image: url("siteBackground.jpg")
 }
@@ -20,7 +23,8 @@
 #navBar li a{
   display: block;
   width: 100%;
-  font: bold 20px "Avantgarde";
+  font: bold 20px;
+  font-family:  "Lucida Sans Unicode", "Lucida Grande", sans-serif;
   margin: 10px;
   color: #FFC300;
 }
@@ -29,8 +33,7 @@
 }
 
 #break{
-  margin-top: 60px;
-  margin-bottom: 60px;
+  margin: 20px;
   position: relative;
 }
 .login{
@@ -66,7 +69,16 @@ th, td {
   padding: 10px;
 }
 table {
-  overflow: auto;
-  height: 200px;
+  margin: 15px;
+  overflow-y: auto;
+  height: 100px;
   width: 100%;
+}
+label {
+  font-size: 36px;
+  font-family: "Henny Penny",;
+}
+h1 {
+  font-family: "Acme", sans-serif;
+  font-size: 60px;
 }
