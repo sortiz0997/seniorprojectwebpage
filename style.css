@@ -65,17 +65,21 @@ p {
   font-family: "FreeMono", monospace;
   font-size: 15px;
 }
-#deviceTable {
-  overflow: auto;
-  margin-top: 10px;
+#tableWrapper {
+  position: relative;
 }
-table, th, thead{
-  margin: 15px;
-  height: 100px;
-  width: 100%;
-  font-size: 24px;
-  position: absolute;
-  z-index: 2;
+#divTable {
+  height: 150px;
+  overflow: auto;
+  margin-top: 20px;
+}
+
+#tableWrapper table, th, thead .text{
+  position:absolute;   
+  top:-20px;
+  z-index:2;
+  height:20px;
+  width:100%;
 }
 tbody {
   padding: 10px;
