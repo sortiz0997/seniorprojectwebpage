@@ -204,9 +204,11 @@ function changeValues(){
               break;
             }
           }
-      window.setTimeout(view,1000);
-      document.getElementById('deleteConfirm').style.display = 'block';
-      clearInputs();
+      })
+      .then(function(){
+        window.setTimeout(view,1000);
+        document.getElementById('deleteConfirm').style.display = 'block';
+        clearInputs();
       })
 }
   
