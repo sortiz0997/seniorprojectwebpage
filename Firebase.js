@@ -176,9 +176,16 @@ function changeValues(){
   var values = [serialNumb,assetTag];
   laptopRef.once('value')
     .then(function(dataSnapshot){
-      dataSnapshot.forEach(function(snapShot){
+      var found;
+      found = dataSnapshot.forEach(function(snapShot){
         if(snapShot.child('assetTag').val() == device || snapShot.child('serialNumber').val() == device){
-          var ref = databaseFire.database().ref('Laptops/' + snapShot.key);
+            return true;
+        }
+      });
+      return found;
+    })
+    .then(function(outcome){
+      var ref = databaseFire.database().ref('Laptops/' + snapShot.key);
         for(var i =0 ; i<values.length; i++){
           switch (i){
             case 0:
@@ -193,14 +200,11 @@ function changeValues(){
               break;
             }
           }
-          return true;
-        }
+      window.setTimeout(view,3000);
+      clearInputs();
       })
-    })
-    window.setTimeout(view,3000);
-    clearInputs();
-  }
-
+}
+  
 function serviceFound(found, device){
   document.getElementById('deviceService').innerHTML = device;
   if(found){
@@ -215,18 +219,22 @@ function serviceRequest(){
   var reporter = document.getElementById('serviceReporter').value;
   laptopRef.once('value')
     .then(function(dataSnapshot){
-      dataSnapshot.forEach(function(snapShot){
+      var found;
+      found = dataSnapshot.forEach(function(snapShot){
         if(snapShot.child('assetTag').val() == device || snapShot.child('serialNumber').val() == device){
-          var ref = databaseFire.database().ref('Laptops/' + snapShot.key);
-          if(service == 'false')
-            ref.update({serviceStatus: service});
-          else
-            ref.update({serviceStatus: reporter + ': ' + service});
-          return true;
+            return true;
         }
-      })
+      });
+      return found;
     })
-    clearInputs();
+    .then(function(outcome){
+      var ref = databaseFire.database().ref('Laptops/' + snapShot.key);
+      if(service == 'false')
+        ref.update({serviceStatus: service});
+      else
+        ref.update({serviceStatus: reporter + ': ' + service});
+      clearInputs();
+      })
 }
 function borrowFound(found, device){
   document.getElementById('borrowDevice').innerHTML = device;

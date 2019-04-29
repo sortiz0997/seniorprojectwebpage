@@ -22,7 +22,6 @@ function login(){
        return true;
       }
     });
-    console.log(found);
     return found;
   })
   .then(function(outcome) {
