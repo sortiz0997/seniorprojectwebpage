@@ -209,7 +209,7 @@ function changeValues(){
         window.setTimeout(function(){
           view(); 
           document.getElementById('deleteConfirm').style.display = 'block';
-        clearInputs()},2000);
+          clearInputs()},1500);
       })
 }
   
