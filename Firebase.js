@@ -206,9 +206,10 @@ function changeValues(){
           }
       })
       .then(function(){
-        window.setTimeout(view,1000);
-        document.getElementById('deleteConfirm').style.display = 'block';
-        clearInputs();
+        window.setTimeout(function(){
+          view(); 
+          document.getElementById('deleteConfirm').style.display = 'block';
+        clearInputs()},2000);
       })
 }
   
