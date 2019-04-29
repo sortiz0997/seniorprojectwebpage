@@ -31,8 +31,7 @@
 }
 
 #break{
-  margin-top: 60px;
-  margin-bottom: 60px;
+  margin: 20px;
   position: relative;
 }
 .login{
@@ -64,19 +63,18 @@ p {
   font-family: "FreeMono", monospace;
   font-size: 15px;
 }
-th, td {
+th, td{
   padding: 10px;
 }
 table {
-  overflow: auto;
-  height: 200px;
   width: 100%;
+  text-align: center;
 }
 label {
-  font-size: 24px;
+  font-size: 16px;
   font-family: "Henny Penny",;
 }
 h1 {
   font-family: "Acme", sans-serif;
-  font-size: 60px;
+  font-size: 50px;
 }
