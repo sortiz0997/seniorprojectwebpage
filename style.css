@@ -61,7 +61,7 @@ input[type=submit] {
 }
 p {
   font-family: "FreeMono", monospace;
-  font-size: 15px;
+  font-size: 20px;
 }
 th, td{
   padding: 10px;
@@ -71,7 +71,7 @@ table {
   text-align: center;
 }
 label {
-  font-size: 16px;
+  font-size: 20px;
   font-family: "Henny Penny",;
 }
 h1 {
