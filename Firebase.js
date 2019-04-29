@@ -182,9 +182,11 @@ function changeValues(){
             return snapShot.key;
         }
       });
+      console.log(found);
       return found;
     })
     .then(function(outcome){
+      console.log(outcome);
         var ref = databaseFire.database().ref('Laptops/' + outcome);
         for(var i =0 ; i<values.length; i++){
           switch (i){
