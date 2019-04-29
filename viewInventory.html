@@ -58,7 +58,7 @@
       <div id="editSpace"  style="display: none">
         <p id="deviceValue" style="display: none"></p>
         <p>Enter below the new values for the device. Previous values are shown above</p>
-        <form id="edit" action="#" onsubmit="changeValues()">
+        <form id="edit" action="#" onsubmit="changeValues(); return false;">
 
           <label for="serialEdit"><b>Enter New Serial Number:</b></label>
           <input type="text" id="serialEdit" placeholder="Serial Number"/>
