@@ -174,12 +174,14 @@ function changeValues(){
   var serialNumb = document.getElementById('serialEdit').value.toUpperCase();
   var assetTag = document.getElementById('assetEdit').value.toUpperCase();
   var values = [serialNumb,assetTag];
+  var key;
   laptopRef.once('value')
     .then(function(dataSnapshot){
       var found;
       found = dataSnapshot.forEach(function(snapShot){
         if(snapShot.child('assetTag').val() == device || snapShot.child('serialNumber').val() == device){
-            return snapShot.key;
+            key = snapShot.key;
+            return true;
         }
       });
       console.log(found);
@@ -187,7 +189,7 @@ function changeValues(){
     })
     .then(function(outcome){
       console.log(outcome);
-        var ref = databaseFire.database().ref('Laptops/' + outcome);
+        var ref = databaseFire.database().ref('Laptops/' + key);
         for(var i =0 ; i<values.length; i++){
           switch (i){
             case 0:
