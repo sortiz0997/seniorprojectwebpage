@@ -204,7 +204,8 @@ function changeValues(){
               break;
             }
           }
-      window.setTimeout(view,3000);
+      window.setTimeout(view,1000);
+      document.getElementById('deleteConfirm').style.display = 'block';
       clearInputs();
       })
 }
