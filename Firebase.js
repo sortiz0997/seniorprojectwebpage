@@ -179,13 +179,13 @@ function changeValues(){
       var found;
       found = dataSnapshot.forEach(function(snapShot){
         if(snapShot.child('assetTag').val() == device || snapShot.child('serialNumber').val() == device){
-            return true;
+            return snapShot.key;
         }
       });
       return found;
     })
     .then(function(outcome){
-      var ref = databaseFire.database().ref('Laptops/' + snapShot.key);
+        var ref = databaseFire.database().ref('Laptops/' + outcome);
         for(var i =0 ; i<values.length; i++){
           switch (i){
             case 0:
