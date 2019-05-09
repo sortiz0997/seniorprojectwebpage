@@ -22,11 +22,11 @@ var loginRef = databaseFire.database().ref('Logins/');
  * Function for login
  */
 function login(){
-  loginRef.once('value')
+  loginRef.once("value")
   .then(function(dataSnapshot)  {
     var found;
     found = dataSnapshot.forEach(function(snapShot) {
-      if(snapShot.child('Username').val() == document.getElementById('userName').value.toUpperCase() && document.getElementById('passWord').value.toUpperCase() == snapShot.child('Password').val()){
+      if(snapShot.child("Username").val() == document.getElementById('userName').value.toUpperCase() && document.getElementById('passWord').value.toUpperCase() == snapShot.child('Password').val()){
        return true;
       }
     });
@@ -34,11 +34,11 @@ function login(){
   })
   .then(function(outcome) {
     if(outcome  == true){
-      window.location.href = 'mainPage.html';
+      window.location.href = "mainPage.html";
     }
     else {
-      document.createElement('p').setAttribute('id','notification');
-    document.getElementById('notification').innerHTML = 'Account Does Not Exists, Please Create a New Account';
+      document.createElement("p").setAttribute("id","notification");
+    document.getElementById("notification").innerHTML = "Account Does Not Exists, Please Create a New Account";
     }
   }, function(error){
     window.alert("An error has occured.\nPlease reload or check your connection.\n" + error)

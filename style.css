@@ -56,8 +56,13 @@ input[type=submit] {
 
 /* Style the container for inputs */
 .container {
-/*   background-color: #f1f1f1;
- */  padding: 20px;
+  width: 700px;
+  clear: both;
+  padding: 20px;
+}
+.container input{
+  clear: both;
+  width: 100%;
 }
 p {
   font-family: "FreeMono", monospace;
