@@ -1,10 +1,17 @@
-<!DOCTYPE html>
+<!-- 
+  Author: Selina Ortiz '19 Trinity College
+  Submission: May 9, 2019
+
+  createNew.html - HTML file for creating a new account for E-ventory
+                  password verification code and styling adapted from w3schools.com
+ --><!DOCTYPE html>
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>
     <script src = 'login.js'></script>
     <link rel="stylesheet" href="style.css"/>
+    <!-- styling code adapted from https://www.w3schools.com/howto/howto_js_password_validation.asp -->
     <style>
       input[type=radio] {
         width: 5%;
@@ -90,7 +97,7 @@
       <p id="length" class="invalid">Minimum <b>8 characters</b></p>
       <p id="special" class="invalid"><b>Special Character !@#\$%\^&\*</b></p>
     </div>
-
+    <!-- script adapted from https://www.w3schools.com/howto/howto_js_password_validation.asp -->
     <script>
       var myInput = document.getElementById("newPassword");
       var letter = document.getElementById("letter");

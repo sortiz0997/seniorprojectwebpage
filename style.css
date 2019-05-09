@@ -61,7 +61,7 @@ input[type=submit] {
 }
 p {
   font-family: "FreeMono", monospace;
-  font-size: 20px;
+  font-size: 18px;
 }
 th, td{
   padding: 10px;
@@ -77,4 +77,7 @@ label {
 h1 {
   font-family: "Acme", sans-serif;
   font-size: 50px;
+}
+h2 {
+  font-family: "Acme", sans-serif;
 }

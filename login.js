@@ -1,5 +1,12 @@
-/* eslint-disable no-alert */
-/* eslint-disable no-unused-vars */
+/**
+ * Author: Selina Ortiz '19 Trinity College
+ * Submission: May 9, 2019
+ * 
+ * login.js - Javascript files that control the log-in functions for the E-ventory System.
+ */
+/**
+ * Configuration to initialize and get reference to Firebase database
+ */
  var config = {
   apiKey: "AIzaSyCFax9wp15O-GA9mUqgLzcbBqjryA7UOZI",
   authDomain: "e-ventory.firebaseapp.com",
@@ -8,17 +15,18 @@
   storageBucket: "e-ventory.appspot.com",
   messagingSenderId: "861989033322"
 };
-// eslint-disable-next-line no-undef
 var databaseFire = firebase.initializeApp(config);
 var loginRef = databaseFire.database().ref('Logins/');
 
+/**
+ * Function for login
+ */
 function login(){
   loginRef.once('value')
   .then(function(dataSnapshot)  {
     var found;
     found = dataSnapshot.forEach(function(snapShot) {
       if(snapShot.child('Username').val() == document.getElementById('userName').value.toUpperCase() && document.getElementById('passWord').value.toUpperCase() == snapShot.child('Password').val()){
-       // return resolve(true);
        return true;
       }
     });
@@ -26,7 +34,7 @@ function login(){
   })
   .then(function(outcome) {
     if(outcome  == true){
-      window.location.href = 'EventoryDraft1.html';
+      window.location.href = 'mainPage.html';
     }
     else {
       document.createElement('p').setAttribute('id','notification');
@@ -35,15 +43,10 @@ function login(){
   }, function(error){
     window.alert("An error has occured.\nPlease reload or check your connection.\n" + error)
   })
-        /* window.location.href = 'EventoryDraft1.html';
-        return true;
-      } else  {
-        window.setTimeout(2000);
-        document.createElement('p').setAttribute('id','notification');
-        document.getElementById('notification').innerHTML = 'Account Does Not Exists, Please Create a New Account';
-      } */
 }
-
+/**
+ * Function to clear the input fields when neccessary
+ */
 function clearInputs(){
   var elements = document.getElementsByTagName("input");
   for (var i=0; i < elements.length; i++) {
@@ -52,6 +55,9 @@ function clearInputs(){
     }
   }
 }
+/**
+ * Function to create a new log-in account
+ */
 function createNewAccount(){
   var email = document.getElementById('newEmail').value;
   var accUserName = document.getElementById('newUsrname').value;
@@ -61,40 +67,42 @@ function createNewAccount(){
     access = 'admin';
   else 
     access = 'teacher';
-  var login = {Username:accUserName.toUpperCase(), Password: accPassWord.toUpperCase(), Email: email.toUpperCase(), Privilege: access.toUpperCase()};
+  var loginVal = {Username:accUserName.toUpperCase(), Password: accPassWord.toUpperCase(), Email: email.toUpperCase(), Privilege: access.toUpperCase()};
   if(document.getElementById('newPassword').value != document.getElementById('confirmPassword').value){
     window.alert("Passwords Don't Match!");
-  } else if(loginExists(email.toUpperCase(), accUserName.toUpperCase(), accPassWord.toUpperCase())){
-    
-    window.alert('Account Already Exsists');
-  }
-    else  {
-    databaseFire.database().ref('Logins/').push(login);
-    window.alert("Account Created");
-    clearInputs();
-    window.location.href ='loginStart.html';
-  }
+  } 
+  loginExists(email.toUpperCase(), accUserName.toUpperCase(), accPassWord.toUpperCase(), loginVal);
 }
-function loginExists(email,usrName,passWord){
-  console.log('checked');
+/**
+ * Function to help find out if account being created already exists and to save new accounts to the firebase
+ * @param {String} email 
+ * @param {String} usrName 
+ * @param {String} passWord 
+ */
+function loginExists(email,usrName,passWord, loginVal){
   loginRef.once('value')
   .then(function(dataSnapshot)  {
     var found;
     found = dataSnapshot.forEach(function(snapShot) {
-      if(snapShot.child('Email') == email && snapShot.child('Username').val() == usrName && snapShot.child('Password').val() == passWord){
-        console.log(found);
+      if(snapShot.child("Email").val() == email && snapShot.child('Username').val() == usrName && snapShot.child('Password').val() == passWord){
         return true;
       }
     })
-    console.log("function data: " + found);
     if (found){
       return true;
     }
     else 
     return false;
   }).then(function(found){
-    console.log("loginExists: " + found);
-    return found;
+    if(found){
+      window.alert('Account Already Exsists');
+    }
+    else{
+      databaseFire.database().ref('Logins/').push(loginVal);
+      window.alert("Account Created");
+      clearInputs();
+      window.location.href ='loginStart.html';
+    }
   })
   
 }
