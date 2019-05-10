@@ -17,6 +17,19 @@ var config = {
 var databaseFire = firebase.initializeApp(config, "E-ventory");
 var laptopRef = databaseFire.database().ref('Laptops' + '/');
 
+/**
+ * function to hide links to pages that teachers should not have access to.
+ */
+function loads(){
+  var privledge = sessionStorage.getItem("access");
+  console.log(privledge);
+  if (privledge != "ADMIN"){
+    var list = document.getElementsByClassName("admin");
+    for(var i = 0; i < list.length; i++){
+      list[i].style.display = 'none';
+    }
+  }
+}
 //collects total database data
 function view(){
   document.getElementById('editConfirm').style.display = 'block';
@@ -223,14 +236,10 @@ function changeValues(){
             return true;
         }
       });
-      console.log(found);
       return found;
     })
     .then(function(outcome){
-      console.log(outcome);
         var ref = databaseFire.database().ref('Laptops/' + key);
-        ref.once('value')
-        .then(function(dataSnapshot){
           for(var i =0 ; i<values.length; i++){
             switch (i){
               case 0:
@@ -245,19 +254,21 @@ function changeValues(){
                 break;
               case 2:
                 if(values[i] != ''){
-                  var update = {deviceModel: dataSnapshot.child('deviceModel').val(), serialNumber: dataSnapshot.child('serialNumber').val(), assetTag: dataSnapshot.child('assetTag').val(), serviceStatus: dataSnapshot.child('serviceStatus').val(), borrow: dataSnapshot.child('borrow').val()};
-                  databaseFire.database().ref("Laptops" + '/' + newLocation.toUpperCase()).set(update)
-                  .then(function(){
-                    ref.remove();
-                  })
-                  .catch(function(error){
-                    window.alert(error +'\nCould not edit device.');
-                  })
-                }
+                  ref.once('value')
+                  .then(function(dataSnapshot){
+                    var update = {deviceModel: dataSnapshot.child('deviceModel').val(), serialNumber: dataSnapshot.child('serialNumber').val(), assetTag: dataSnapshot.child('assetTag').val(), serviceStatus: dataSnapshot.child('serviceStatus').val(), borrow: dataSnapshot.child('borrow').val()};
+                    databaseFire.database().ref("Laptops" + '/' + newLocation.toUpperCase()).set(update)
+                    .then(function(){
+                      ref.remove();
+                    })
+                    .catch(function(error){
+                      window.alert(error +'\nCould not edit device.');
+                    })
+                })
               }
+              break;
             }
-        })
-        
+        }
       })
       .then(function(){
         window.setTimeout(function(){
@@ -279,6 +290,25 @@ function serviceFound(found, device){
     document.getElementById('serviceConfirm').style.display = 'none';
     document.getElementById('serviceTable').style.display = 'block';
     document.getElementById('service').style.display = 'block';
+    var serviceVal;
+    laptopRef.once('value')
+      .then(function(dataSnapshot){
+        var found;
+        found = dataSnapshot.forEach(function(snapShot){
+          if(snapShot.child('assetTag').val() == device || snapShot.child('serialNumber').val() == device){
+            serviceVal = snapShot.child('serviceStatus').val();
+            if(snapShot.child('serviceStatus').val() != false){
+              document.getElementById('serviceNotification').innerHTML = "Current Service Request for Device is Below: ";
+              databaseFire.database().ref("ServiceRequests/" + serviceVal).once('value')
+              .then(function(dataSnapshot1){
+                document.getElementById('displayService').innerHTML = "Requested: " + dataSnapshot1.child('Requested').val() + " \nReporter: " + dataSnapshot1.child('Reporter').val() + "\nRequest: " + dataSnapshot1.child('Request').val() + "\nCompleted: " + dataSnapshot1.child('Completed').val();
+              })
+            }
+            return true;
+          }
+        });
+        return found;
+      })
   }
 }
 /**
@@ -288,23 +318,51 @@ function serviceRequest(){
   var device = document.getElementById('deviceService').innerHTML;
   var service = document.getElementById('serviceEdit').value;
   var reporter = document.getElementById('serviceReporter').value;
+  var key;
   laptopRef.once('value')
     .then(function(dataSnapshot){
       var found;
       found = dataSnapshot.forEach(function(snapShot){
         if(snapShot.child('assetTag').val() == device || snapShot.child('serialNumber').val() == device){
-            return true;
+          key = snapShot.key;  
+          return true;
         }
       });
       return found;
     })
     .then(function(outcome){
-      var ref = databaseFire.database().ref('Laptops/' + snapShot.key);
-      if(service == 'false')
-        ref.update({serviceStatus: service});
-      else
-        ref.update({serviceStatus: reporter + ': ' + service});
+      var ref = databaseFire.database().ref('Laptops/' + key);
+      var d = new Date();
+      var serviceVal;
+      if(service == 'false'){
+        ref.once('value')
+        .then(function(dataSnapshot){
+          serviceVal = dataSnapshot.child('serviceStatus').val();
+          databaseFire.database().ref("ServiceRequests/").once('value')
+          .then(function(dataSnapshot1){
+            var date = d.toDateString();
+            var update = {Completed: date};
+            databaseFire.database().ref("ServiceRequests/" + serviceVal).update(update);
+          })
+        })
+        .then(function(){
+          ref.update({serviceStatus: false});
+        })
+        .then(function(){
+          if(window.alert("Service Request has been made/changed")){}
+          else window.location.reload();
+        })
+      }
+      else{
+        var update = {Requested: d.toDateString(), Reporter: reporter, Request: service, Device: device, Completed: false};
+        document.getElementById('serviceNotification').innerHTML = "Current Service Request for Device is Below: ";
+        document.getElementById('displayService').innerHTML = "Requested: " + d.toDateString() + "Reporter: " + reporter  + "Request: " + service + "Completed: false";
+        var servKey = databaseFire.database().ref("ServiceRequests/").push().key;
+        databaseFire.database().ref("ServiceRequests/" + servKey).set(update);
+        ref.update({serviceStatus: servKey});
+      }
       clearInputs();
+      window.alert("Service Request has been made/changed");
       })
 }
 /**
@@ -318,7 +376,7 @@ function borrowFound(found, device){
   document.getElementById('borrowDevice').innerHTML = device;
   if(found){
     document.getElementById('borrowConfirm').style.display = 'none';
-    document.getElementById('borrowTble').style.display = 'block';
+    document.getElementById('borrowTable').style.display = 'block';
     document.getElementById('borrowForm').style.display = 'block';
   }
 }
@@ -338,5 +396,9 @@ function borrowRequest(){
           return true;
         }
       })
+    })
+    .then(function(){
+      if(window.alert("Borrow request has been made/changed.")){}
+      else window.location.reload();
     })
 }

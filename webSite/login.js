@@ -22,12 +22,19 @@ var loginRef = databaseFire.database().ref('Logins/');
  * Function for login
  */
 function login(){
+  var access;
   loginRef.once("value")
   .then(function(dataSnapshot)  {
     var found;
     found = dataSnapshot.forEach(function(snapShot) {
       if(snapShot.child("Username").val() == document.getElementById('userName').value.toUpperCase() && document.getElementById('passWord').value.toUpperCase() == snapShot.child('Password').val()){
-       return true;
+        access = snapShot.child("Privilege").val();
+        if (typeof(Storage) !== "undefined") {
+          sessionStorage.setItem("access", access);
+        } else {
+          window.alert("Unable to store access level");
+        }
+        return true;
       }
     });
     return found;

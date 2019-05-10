@@ -32,6 +32,7 @@
 
 #break{
   margin: 20px;
+  clear:both;
   position: relative;
 }
 .login{
