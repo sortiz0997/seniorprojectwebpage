@@ -22,7 +22,6 @@ var laptopRef = databaseFire.database().ref('Laptops' + '/');
  */
 function loads(){
   var privledge = sessionStorage.getItem("access");
-  console.log(privledge);
   if (privledge != "ADMIN"){
     var list = document.getElementsByClassName("admin");
     for(var i = 0; i < list.length; i++){
